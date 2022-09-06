@@ -63,7 +63,7 @@ function startGame() {
     countdown = 10;
 
     // Start the timer 'startTimer'
-
+    startTimer();
         // IF 'countdown' === 0 THEN 'endGame()'
 }
     
