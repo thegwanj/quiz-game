@@ -6,15 +6,92 @@ var questionPosition = 0;
 var questions = [
     {
         //question
+        question: "How do you write \"Hello Worl\" in an alert box?",
         //answers
-        answers: ["Answer A", "Answer B"]
+        answers: ["alert(\"Hello World\");", "alertBox(\"Hello World\");", "msg(\"Hello World\");", "msgBox(\"Hello World\");"],
         //correct answers
+        correct: "alert(\"Hello World\");"
     },
     {
         //question
+        question: "How do you create a function?",
         //answers
+        answers: ["function myFunction()", "function:myFunction()", "function = myFunction()"],
         //correct answers
+        correct: "function myFunction()"
+    },
+    {
+        //question
+        question: "How do you call a function named \"myFunction\"?",
+        //answers
+        answers: ["call myFunction()", "call function myFunction()", "myFunction()"],
+        //correct answers
+        correct: "myFunction()"
+    },
+    {
+        //question
+        question: "How do you write an IF statement?",
+        //answers
+        answers: ["if i == 5 then", "if (i == 5)", "if i = 5", "if i = 5 then"],
+        //correct answers
+        correct: "if (i == 5)"
+    },
+    {
+        //question
+        question: "Arrays in JavaScript can be used to store:",
+        //answers
+        answers: ["numbers and strings", "other arrays", "booleans", "All of the above"],
+        //correct answers
+        correct: "All of the above"
+    },
+    {
+        //question
+        question: "What does a comment in JavaScript look like?",
+        //answers
+        answers: ["//This is a comment", "\'This is a comment", "<!--This is a comment-->"],
+        //correct answers
+        correct: "//This is a comment"
     }
+    // {
+    //     //question
+    //     question: "",
+    //     //answers
+    //     answers: ["", "", "", ""],
+    //     //correct answers
+    //     correct: ""
+    // },
+    // {
+    //     //question
+    //     question: "",
+    //     //answers
+    //     answers: ["", "", "", ""],
+    //     //correct answers
+    //     correct: ""
+    // },
+    // {
+    //     //question
+    //     question: "",
+    //     //answers
+    //     answers: ["", "", "", ""],
+    //     //correct answers
+    //     correct: ""
+    // },
+    // {
+    //     //question
+    //     question: "",
+    //     //answers
+    //     answers: ["", "", "", ""],
+    //     //correct answers
+    //     correct: ""
+    // },
+    // {
+    //     //question
+    //     question: "",
+    //     //answers
+    //     answers: ["", "", "", ""],
+    //     //correct answers
+    //     correct: ""
+    // }
 ];
 
 // DECLARE a 'timerInterval'
