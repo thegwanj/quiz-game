@@ -18,11 +18,13 @@ var questions = [
 ];
 
 // DECLARE a 'timerInterval'
+var timeInterval;
+
 // function startTimer() {
 //     var timeLeft = 5;
   
 //     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-//     var timeInterval = setInterval(function () {
+//     timeInterval = setInterval(function () {
 //       // As long as the `timeLeft` is greater than 1
 //       if (timeLeft > 1) {
 //         // Set the `textContent` of `timerEl` to show the remaining seconds
@@ -73,6 +75,8 @@ function endGame() {
     // Hide the questions area
 
     // Show the record high score
+
+    // Clear the timer interval to stop it from running
 }
 
 // Function 'answerQuestion'
