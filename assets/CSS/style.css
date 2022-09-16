@@ -1,0 +1,10 @@
+header {
+    display: inline-flex;
+    width: 100%;
+}
+
+main {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
