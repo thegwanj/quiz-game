@@ -87,11 +87,12 @@ var currentQuestion = questions[questionPosition];
 var timerEl = document.querySelector('#timer');
 
 var startEl = document.querySelector('#start');
+
 // Function startGame
 function startGame() {
     // Hide the start screen
     startEl.setAttribute("display", "none");
-    
+
     // Set the question position to 0
     questionPosition = 0;
 
@@ -113,6 +114,7 @@ function endGame() {
     // Show the record high score
 
     // Clear the timer interval to stop it from running
+    countdown = 0;
 }
 
 // Function 'answerQuestion'
@@ -126,17 +128,15 @@ function answerQuestion() {
             // THEN we need to subtract from 'countdown'
 
     //Increasing the question position by 1
+    questionPosition++;
 
     // IF I've passed the last question
-
-        // THEN  'endGame()'
-
-    // ELSE
-    
+    if(questionPosition > questions.length){
+        endGame();
+    } else {
         // Display the current question
-
-        // questionPosition++;
-        // displayCurrentQuestion();
+        displayCurrentQuestion();
+    }
 }
     
 
@@ -147,3 +147,6 @@ function displayCurrentQuestion() {
 }
 
 // Function 'recordHighScore'
+function recordHighScore() {
+    
+}
