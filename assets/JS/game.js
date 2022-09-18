@@ -86,10 +86,12 @@ var currentQuestion = questions[questionPosition];
 // DECLARE the 'timerEl'
 var timerEl = document.querySelector('#timer');
 
+var startEl = document.querySelector('#start');
 // Function startGame
 function startGame() {
     // Hide the start screen
-
+    startEl.setAttribute("display", "none");
+    
     // Set the question position to 0
     questionPosition = 0;
 
