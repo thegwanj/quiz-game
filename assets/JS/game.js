@@ -52,46 +52,6 @@ var questions = [
         //correct answers
         correct: "//This is a comment"
     }
-    // {
-    //     //question
-    //     question: "",
-    //     //answers
-    //     answers: ["", "", "", ""],
-    //     //correct answers
-    //     correct: ""
-    // },
-    // {
-    //     //question
-    //     question: "",
-    //     //answers
-    //     answers: ["", "", "", ""],
-    //     //correct answers
-    //     correct: ""
-    // },
-    // {
-    //     //question
-    //     question: "",
-    //     //answers
-    //     answers: ["", "", "", ""],
-    //     //correct answers
-    //     correct: ""
-    // },
-    // {
-    //     //question
-    //     question: "",
-    //     //answers
-    //     answers: ["", "", "", ""],
-    //     //correct answers
-    //     correct: ""
-    // },
-    // {
-    //     //question
-    //     question: "",
-    //     //answers
-    //     answers: ["", "", "", ""],
-    //     //correct answers
-    //     correct: ""
-    // }
 ];
 
 // DECLARE a 'timerInterval'
