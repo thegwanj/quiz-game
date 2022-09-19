@@ -16,7 +16,7 @@ var questions = [
         //question
         question: "How do you create a function?",
         //answers
-        answers: ["function myFunction()", "function:myFunction()", "function = myFunction()"],
+        answers: ["function myFunction()", "function:myFunction()", "function = myFunction()", "None of the above"],
         //correct answers
         correct: "function myFunction()"
     },
@@ -24,7 +24,7 @@ var questions = [
         //question
         question: "How do you call a function named \"myFunction\"?",
         //answers
-        answers: ["call myFunction()", "call function myFunction()", "myFunction()"],
+        answers: ["call myFunction()", "call function myFunction()", "myFunction()", "None of the above"],
         //correct answers
         correct: "myFunction()"
     },
@@ -97,7 +97,7 @@ function startGame() {
     questionPosition = 0;
 
     // Display the first question (Display the current question)
-
+    displayCurrentQuestion();
     // Set the starting value of 'countdown'
     countdown = 10;
 
@@ -106,10 +106,11 @@ function startGame() {
         // IF 'countdown' === 0 THEN 'endGame()'
 }
     
-
+var questionEl = document.querySelector('#question');
 // Function 'endGame'
 function endGame() {
     // Hide the questions area
+    questionEl.setAttribute("display", "none");
 
     // Show the record high score
 
@@ -117,15 +118,23 @@ function endGame() {
     countdown = 0;
 }
 
+// Declaring question option elements
+var answerOne = document.querySelector('#answerOne').textContent;
+var answerTwo = document.querySelector('#answerTwo').textContent;
+var answerThree = document.querySelector('#answerThree').textContent;
+var answerFour = document.querySelector('#answerFour').textContent;
+
 // Function 'answerQuestion'
 function answerQuestion() {
-    //var currentQuestion = questions[questionPosition];
-
     // Check if the selected answer is correct
+    if(answer == currentQuestion.correct) {
 
+    } else {
         // IF the answer is wrong
+        // THEN we need to subtract from 'countdown'
+        countdown--;
+    }
 
-            // THEN we need to subtract from 'countdown'
 
     //Increasing the question position by 1
     questionPosition++;
@@ -148,5 +157,5 @@ function displayCurrentQuestion() {
 
 // Function 'recordHighScore'
 function recordHighScore() {
-    
+
 }
