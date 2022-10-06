@@ -139,7 +139,7 @@ function answerQuestion() {
 
     } else {
         // IF the answer is wrong OR no selection was made
-        // THEN we need to subtract from 
+        // THEN we need to subtract from the score
         countdown--;
     }
 
