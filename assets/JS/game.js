@@ -86,6 +86,7 @@ var currentQuestion = questions[questionPosition];
 // DECLARE the 'timerEl'
 var timerEl = document.querySelector('#timer');
 
+var mainPage = document.querySelector('#main');
 var startEl = document.querySelector('#start');
 var startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', startGame);
@@ -99,7 +100,13 @@ function startGame() {
     questionPosition = 0;
 
     // Display the first question (Display the current question)
+    var content = 
+    `
     
+    
+    `;
+
+    mainPage.appendChild(content);
 
     // Set the starting value of 'countdown'
     countdown = 10;
@@ -117,8 +124,6 @@ function endGame() {
 
     // Show the record high score
 
-    // Clear the timer interval to stop it from running
-    countdown = 0;
 }
 
 // Declaring question option elements
@@ -133,8 +138,8 @@ function answerQuestion() {
     if(answer == currentQuestion.correct) {
 
     } else {
-        // IF the answer is wrong
-        // THEN we need to subtract from 'countdown'
+        // IF the answer is wrong OR no selection was made
+        // THEN we need to subtract from 
         countdown--;
     }
 
@@ -154,7 +159,10 @@ function answerQuestion() {
 
 // Function 'displayCurrentQuestion'
 function displayCurrentQuestion() {
-    //questions[questionPosition];
+    // Need to restart the timer
+
+    // Display the current question
+        //questions[questionPosition];
 
 }
 
