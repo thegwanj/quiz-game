@@ -87,17 +87,20 @@ var currentQuestion = questions[questionPosition];
 var timerEl = document.querySelector('#timer');
 
 var startEl = document.querySelector('#start');
+var startBtn = document.querySelector('#startBtn');
+startBtn.addEventListener('click', startGame);
 
 // Function startGame
 function startGame() {
     // Hide the start screen
-    startEl.setAttribute("display", "none");
+    startEl.style.display = 'none';
 
     // Set the question position to 0
     questionPosition = 0;
 
     // Display the first question (Display the current question)
-    displayCurrentQuestion();
+    
+
     // Set the starting value of 'countdown'
     countdown = 10;
 
