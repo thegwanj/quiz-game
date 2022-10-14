@@ -1,6 +1,8 @@
 // DECLARE 'countdown' variable
 var countdown = 0;
 
+var score = 0;
+
 // DECLARE 'questions' array
 var questionPosition = 0;
 var questions = [
@@ -8,7 +10,7 @@ var questions = [
         //question
         question: "How do you write \"Hello Worl\" in an alert box?",
         //answers
-        answers: ["alert(\"Hello World\");", "alertBox(\"Hello World\");", "msg(\"Hello World\");", "msgBox(\"Hello World\");"],
+        answers: ["alert(Hello World);", "alertBox(\"Hello World\");", "msg(\"Hello World\");", "msgBox(\"Hello World\");"],
         //correct answers
         correct: "alert(\"Hello World\");"
     },
@@ -48,14 +50,13 @@ var questions = [
         //question
         question: "What does a comment in JavaScript look like?",
         //answers
-        answers: ["//This is a comment", "\'This is a comment", "<!--This is a comment-->"],
+        answers: ["//This is a comment", "\'This is a comment", "<!--This is a comment-->", "4th answer"],
         //correct answers
         correct: "//This is a comment"
     }
 ];
 
 // DECLARE a 'timerInterval'
-var timeInterval;
 
 function startTimer(timeLeft) {  
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -73,7 +74,7 @@ function startTimer(timeLeft) {
       } else {
         timerEl.textContent = '0';
         // Use `clearInterval()` to stop the timer
-        clearInterval(timeInterval);
+        clearInterval();
         // Call the `answerQuestion` function to go to next question
         answerQuestion();
       }
@@ -86,30 +87,38 @@ var currentQuestion = questions[questionPosition];
 // DECLARE the 'timerEl'
 var timerEl = document.querySelector('#timer');
 
-var mainPage = document.querySelector('#main');
+var mainPage = document.querySelector('#mainSection');
+var question = document.querySelector('#question');
 var startEl = document.querySelector('#start');
 var startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', startGame);
+
+var button1 = document.querySelector('#answer1');
+var button2 = document.querySelector('#answer2');
+var button3 = document.querySelector('#answer3');
+var button4 = document.querySelector('#answer4');
+
+button1.addEventListener('click', answerQuestion);
+button2.addEventListener('click', answerQuestion);
+button3.addEventListener('click', answerQuestion);
+button4.addEventListener('click', answerQuestion);
 
 // Function startGame
 function startGame() {
     // Hide the start screen
     startEl.style.display = 'none';
 
-    // Set the question position to 0
-    questionPosition = 0;
-
     // Display the first question (Display the current question)
-    var content = 
-    `
-    
-    
-    `;
+    var content = questions[questionPosition].question;
+    question.innerHTML = content;
 
-    mainPage.appendChild(content);
+    button1.textContent = questions[questionPosition].answers[0];
+    button2.textContent = questions[questionPosition].answers[1];
+    button3.textContent = questions[questionPosition].answers[2];
+    button4.textContent = questions[questionPosition].answers[3];
 
     // Set the starting value of 'countdown'
-    countdown = 10;
+    countdown = 60;
 
     // Start the timer 'startTimer'
     startTimer(countdown);
@@ -127,25 +136,32 @@ function endGame() {
 }
 
 // Declaring question option elements
-var answerOne = document.querySelector('#answerOne').textContent;
-var answerTwo = document.querySelector('#answerTwo').textContent;
-var answerThree = document.querySelector('#answerThree').textContent;
-var answerFour = document.querySelector('#answerFour').textContent;
+// var answerOne = document.querySelector('#answerOne').textContent;
+// var answerTwo = document.querySelector('#answerTwo').textContent;
+// var answerThree = document.querySelector('#answerThree').textContent;
+// var answerFour = document.querySelector('#answerFour').textContent;
+
+
 
 // Function 'answerQuestion'
-function answerQuestion() {
+function answerQuestion(event) {
     // Check if the selected answer is correct
-    if(answer == currentQuestion.correct) {
+    answer = event.target.textContent;
+    console.log(answer);
+
+    if(answer === questions[questionPosition].correct) {
+        questionPosition++;
+        score++;
 
     } else {
         // IF the answer is wrong OR no selection was made
-        // THEN we need to subtract from the score
-        countdown--;
+        startTimer(parseInt(timerEl.textContent) - 20);
+        questionPosition++;
     }
 
-
+    console.log(score);
     //Increasing the question position by 1
-    questionPosition++;
+
 
     // IF I've passed the last question
     if(questionPosition > questions.length){
@@ -163,7 +179,13 @@ function displayCurrentQuestion() {
 
     // Display the current question
         //questions[questionPosition];
+    var content = questions[questionPosition].question;
+    question.innerHTML = content;
 
+    button1.textContent = questions[questionPosition].answers[0];
+    button2.textContent = questions[questionPosition].answers[1];
+    button3.textContent = questions[questionPosition].answers[2];
+    button4.textContent = questions[questionPosition].answers[3];
 }
 
 // Function 'recordHighScore'
