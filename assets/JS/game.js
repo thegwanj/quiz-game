@@ -126,22 +126,10 @@ function startGame() {
     startTimer(countdown);
 }
     
-// Function 'endGame'
-function endGame() {
-    console.log("Running the endGame function");
-    // Hide the questions area
-    mainPage.style.display = "none";
-
-    // Show the record high score
-    showHighScore();
-}
-
 // Function 'answerQuestion'
 function answerQuestion(event) {
     // Check if the selected answer is correct
     answer = event.target.textContent;
-    console.log(answer);
-    console.log(`questionPosition BEFORE answer: ${questionPosition}`);
 
     if(answer === questions[questionPosition].correct) {
         console.log("Correct Answer!");
@@ -156,9 +144,6 @@ function answerQuestion(event) {
         questionPosition++;
     }
 
-    console.log(score);
-    console.log(`questionPosition AFTER answer: ${questionPosition}`);
-
     // IF I've passed the last question
     if(questionPosition >= questions.length){
         countdown = 0;
@@ -168,7 +153,6 @@ function answerQuestion(event) {
         displayCurrentQuestion();
     }
 }
-    
 
 // Function 'displayCurrentQuestion'
 function displayCurrentQuestion() {
@@ -180,6 +164,16 @@ function displayCurrentQuestion() {
     button2.textContent = questions[questionPosition].answers[1];
     button3.textContent = questions[questionPosition].answers[2];
     button4.textContent = questions[questionPosition].answers[3];
+}
+
+// Function 'endGame'
+function endGame() {
+    console.log("Running the endGame function");
+    // Hide the questions area
+    mainPage.style.display = "none";
+
+    // Show the record high score
+    showHighScore();
 }
 
 // Function for displaying the user's score and the current high score
