@@ -21,6 +21,10 @@ button3.addEventListener('click', answerQuestion);
 button4.addEventListener('click', answerQuestion);
 recordScore.addEventListener('click', recordHighScore);
 
+// Keep mainPage and scoreRecorder hidden at the beginning
+mainPage.style.display = 'none';
+scoreRecorder.style.display = 'none';
+
 // DECLARE countdown and score variables
 var countdown = 0;
 var score = 0;
@@ -109,6 +113,11 @@ var currentQuestion = questions[questionPosition];
 function startGame() {
     // Hide the start screen
     startEl.style.display = 'none';
+    mainPage.style.display = 'initial';
+
+    // Set timer to 60 seconds, questionPosition to 0
+    countdown = 60;
+    questionPosition = 0;    
 
     // Display the first question (Display the current question)
     var content = questions[questionPosition].question;
@@ -118,9 +127,6 @@ function startGame() {
     button2.textContent = questions[questionPosition].answers[1];
     button3.textContent = questions[questionPosition].answers[2];
     button4.textContent = questions[questionPosition].answers[3];
-
-    // Set timer to 60 seconds
-    countdown = 60;
 
     // Start the timer 'startTimer'
     startTimer(countdown);
@@ -168,7 +174,6 @@ function displayCurrentQuestion() {
 
 // Function 'endGame'
 function endGame() {
-    console.log("Running the endGame function");
     // Hide the questions area
     mainPage.style.display = "none";
 
@@ -178,6 +183,9 @@ function endGame() {
 
 // Function for displaying the user's score and the current high score
 function showHighScore() {
+    // Make the highscore and recording section visible
+    scoreRecorder.style.display = "initial";
+
     // Creating variable for storing what will display
     var content = ``;
 
@@ -199,7 +207,7 @@ function showHighScore() {
 // Function 'recordHighScore'
 function recordHighScore() {
     // Getting the user's initials
-    var initials = document.querySelector('#name');
+    var initials = document.querySelector('#name').value;
 
     // IF/ELSE to see if we need to set a new highscore
     // Checking if equal because if user score WAS higher, highscore was overwritten
@@ -208,10 +216,13 @@ function recordHighScore() {
         localStorage.setItem("highscore", highScore);
 
         // Save the user's initials and score
-        localStorage.setItem(initials, score);
+        localStorage.setItem(`${initials}`, score);
     } else {
         //Save the user's initials and score
-        localStorage.setItem(initials, score);
-
+        localStorage.setItem(`${initials}`, score);
     }
+
+    // Hide the recording section and go back to the start
+    scoreRecorder.style.display = 'none';
+    startEl.style.display = "initial";
 }
