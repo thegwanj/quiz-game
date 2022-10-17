@@ -74,6 +74,8 @@ var questions = [
     }
 ];
 
+console.log(questions.length);
+
 function startTimer() {  
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function() {
@@ -92,7 +94,6 @@ function startTimer() {
             // Use `clearInterval()` to stop the timer
             clearInterval(timeInterval);
             // End the game if we hit 0 seconds
-            endGame();
         }
     }, 1000);
 }
@@ -129,11 +130,12 @@ function startGame() {
 //var questionEl = document.querySelector('#question');
 // Function 'endGame'
 function endGame() {
+    console.log("Running the endGame function");
     // Hide the questions area
-    mainPage.setAttribute("display", "none");
+    mainPage.style.display = "none";
 
     // Show the record high score
-
+    recordHighScore();
 }
 
 // Function 'answerQuestion'
@@ -141,24 +143,27 @@ function answerQuestion(event) {
     // Check if the selected answer is correct
     answer = event.target.textContent;
     console.log(answer);
+    console.log(`questionPosition BEFORE answer: ${questionPosition}`);
 
     if(answer === questions[questionPosition].correct) {
+        console.log("Correct Answer!");
         questionPosition++;
         score++;
 
     } else {
         // IF the answer is wrong
+        console.log("Wrong Answer!");
         // Subtract 10 from countdown
         countdown -= 10;
         questionPosition++;
     }
 
     console.log(score);
-    //Increasing the question position by 1
-
+    console.log(`questionPosition AFTER answer: ${questionPosition}`);
 
     // IF I've passed the last question
-    if(questionPosition > questions.length){
+    if(questionPosition >= questions.length){
+        countdown = 0;
         endGame();
     } else {
         // Display the current question
