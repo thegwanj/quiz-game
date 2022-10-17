@@ -204,5 +204,20 @@ function showHighScore() {
 
 // Function 'recordHighScore'
 function recordHighScore() {
+    // Getting the user's initials
+    var initials = document.querySelector('#name');
 
+    // IF/ELSE to see if we need to set a new highscore
+    // Checking if equal because if user score WAS higher, highscore was overwritten
+    if(score === highScore){
+        // Save the highscore in local storeage
+        localStorage.setItem("highscore", highScore);
+
+        // Save the user's initials and score
+        localStorage.setItem(initials, score);
+    } else {
+        //Save the user's initials and score
+        localStorage.setItem(initials, score);
+
+    }
 }
