@@ -16,7 +16,6 @@ button2.addEventListener('click', answerQuestion);
 button3.addEventListener('click', answerQuestion);
 button4.addEventListener('click', answerQuestion);
 
-
 // DECLARE 'countdown' variable
 var countdown = 0;
 
@@ -27,9 +26,9 @@ var questionPosition = 0;
 var questions = [
     {
         //question
-        question: "How do you write \"Hello Worl\" in an alert box?",
+        question: "How do you write \"Hello World\" in an alert box?",
         //answers
-        answers: ["alert(Hello World);", "alertBox(\"Hello World\");", "msg(\"Hello World\");", "msgBox(\"Hello World\");"],
+        answers: ["alert(\"Hello World\");", "alertBox(\"Hello World\");", "msg(\"Hello World\");", "msgBox(\"Hello World\");"],
         //correct answers
         correct: "alert(\"Hello World\");"
     },
@@ -69,37 +68,36 @@ var questions = [
         //question
         question: "What does a comment in JavaScript look like?",
         //answers
-        answers: ["//This is a comment", "\'This is a comment", "<!--This is a comment-->", "4th answer"],
+        answers: ["<!--This is a comment-->", "\'This is a comment", "//This is a comment", "!This is a comment"],
         //correct answers
         correct: "//This is a comment"
     }
 ];
 
-// DECLARE a 'timerInterval'
-
-function startTimer(timeLeft) {  
+function startTimer() {  
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    timeInterval = setInterval(function () {
-      // As long as the `timeLeft` is greater than 1
-      if (timeLeft > 1) {
-        // Set the `textContent` of `timerEl` to show the remaining seconds
-        timerEl.textContent = timeLeft;
-        // Decrement `timeLeft` by 1
-        timeLeft--;
-      } else if (timeLeft === 1) {
-        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-        timerEl.textContent = timeLeft;
-        timeLeft--;
-      } else {
-        timerEl.textContent = '0';
-        // Use `clearInterval()` to stop the timer
-        clearInterval();
-        // Call the `answerQuestion` function to go to next question
-        answerQuestion();
-      }
+    var timeInterval = setInterval(function() {
+        // As long as the `countdown` is greater than 1
+        if (countdown > 1) {
+            // Set the `textContent` of `timerEl` to show the remaining seconds
+            timerEl.textContent = countdown;
+            // Decrement `countdown` by 1
+            countdown--;
+        } else if (countdown === 1) {
+            // When `countdown` is equal to 1, rename to 'second' instead of 'seconds'
+            timerEl.textContent = countdown;
+            countdown--;
+        } else {
+            timerEl.textContent = '0';
+            // Use `clearInterval()` to stop the timer
+            clearInterval(timeInterval);
+            // End the game if we hit 0 seconds
+            endGame();
+        }
     }, 1000);
-  }
-  
+}
+
+
 
 var currentQuestion = questions[questionPosition];
 
@@ -121,19 +119,18 @@ function startGame() {
     button3.textContent = questions[questionPosition].answers[2];
     button4.textContent = questions[questionPosition].answers[3];
 
-    // Set the starting value of 'countdown'
+    // Set timer to 60 seconds
     countdown = 60;
 
     // Start the timer 'startTimer'
     startTimer(countdown);
-        // IF 'countdown' === 0 THEN 'endGame()'
 }
     
-var questionEl = document.querySelector('#question');
+//var questionEl = document.querySelector('#question');
 // Function 'endGame'
 function endGame() {
     // Hide the questions area
-    questionEl.setAttribute("display", "none");
+    mainPage.setAttribute("display", "none");
 
     // Show the record high score
 
@@ -150,8 +147,9 @@ function answerQuestion(event) {
         score++;
 
     } else {
-        // IF the answer is wrong OR no selection was made
-        startTimer(parseInt(timerEl.textContent) - 20);
+        // IF the answer is wrong
+        // Subtract 10 from countdown
+        countdown -= 10;
         questionPosition++;
     }
 
