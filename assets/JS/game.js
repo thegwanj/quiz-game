@@ -1,3 +1,22 @@
+// Declaring variables from the DOM
+var mainPage = document.querySelector('#mainSection');
+var question = document.querySelector('#question');
+var startEl = document.querySelector('#start');
+var startBtn = document.querySelector('#startBtn');
+
+var button1 = document.querySelector('#answer1');
+var button2 = document.querySelector('#answer2');
+var button3 = document.querySelector('#answer3');
+var button4 = document.querySelector('#answer4');
+
+// Adding event listeners to the buttons
+startBtn.addEventListener('click', startGame);
+button1.addEventListener('click', answerQuestion);
+button2.addEventListener('click', answerQuestion);
+button3.addEventListener('click', answerQuestion);
+button4.addEventListener('click', answerQuestion);
+
+
 // DECLARE 'countdown' variable
 var countdown = 0;
 
@@ -87,21 +106,6 @@ var currentQuestion = questions[questionPosition];
 // DECLARE the 'timerEl'
 var timerEl = document.querySelector('#timer');
 
-var mainPage = document.querySelector('#mainSection');
-var question = document.querySelector('#question');
-var startEl = document.querySelector('#start');
-var startBtn = document.querySelector('#startBtn');
-startBtn.addEventListener('click', startGame);
-
-var button1 = document.querySelector('#answer1');
-var button2 = document.querySelector('#answer2');
-var button3 = document.querySelector('#answer3');
-var button4 = document.querySelector('#answer4');
-
-button1.addEventListener('click', answerQuestion);
-button2.addEventListener('click', answerQuestion);
-button3.addEventListener('click', answerQuestion);
-button4.addEventListener('click', answerQuestion);
 
 // Function startGame
 function startGame() {
@@ -134,14 +138,6 @@ function endGame() {
     // Show the record high score
 
 }
-
-// Declaring question option elements
-// var answerOne = document.querySelector('#answerOne').textContent;
-// var answerTwo = document.querySelector('#answerTwo').textContent;
-// var answerThree = document.querySelector('#answerThree').textContent;
-// var answerFour = document.querySelector('#answerFour').textContent;
-
-
 
 // Function 'answerQuestion'
 function answerQuestion(event) {
