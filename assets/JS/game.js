@@ -3,11 +3,15 @@ var mainPage = document.querySelector('#mainSection');
 var question = document.querySelector('#question');
 var startEl = document.querySelector('#start');
 var startBtn = document.querySelector('#startBtn');
+var scoreRecorder = document.querySelector('#scoreRecorder');
+var timerEl = document.querySelector('#timer');
+var scoreResults = document.querySelector('#endGameResult');
 
 var button1 = document.querySelector('#answer1');
 var button2 = document.querySelector('#answer2');
 var button3 = document.querySelector('#answer3');
 var button4 = document.querySelector('#answer4');
+var recordScore = document.querySelector('#recordScore');
 
 // Adding event listeners to the buttons
 startBtn.addEventListener('click', startGame);
@@ -15,11 +19,12 @@ button1.addEventListener('click', answerQuestion);
 button2.addEventListener('click', answerQuestion);
 button3.addEventListener('click', answerQuestion);
 button4.addEventListener('click', answerQuestion);
+recordScore.addEventListener('click', recordHighScore);
 
-// DECLARE 'countdown' variable
+// DECLARE countdown and score variables
 var countdown = 0;
-
 var score = 0;
+var highScore = 0;
 
 // DECLARE 'questions' array
 var questionPosition = 0;
@@ -98,13 +103,7 @@ function startTimer() {
     }, 1000);
 }
 
-
-
 var currentQuestion = questions[questionPosition];
-
-// DECLARE the 'timerEl'
-var timerEl = document.querySelector('#timer');
-
 
 // Function startGame
 function startGame() {
@@ -127,7 +126,6 @@ function startGame() {
     startTimer(countdown);
 }
     
-//var questionEl = document.querySelector('#question');
 // Function 'endGame'
 function endGame() {
     console.log("Running the endGame function");
@@ -135,7 +133,7 @@ function endGame() {
     mainPage.style.display = "none";
 
     // Show the record high score
-    recordHighScore();
+    showHighScore();
 }
 
 // Function 'answerQuestion'
@@ -174,10 +172,7 @@ function answerQuestion(event) {
 
 // Function 'displayCurrentQuestion'
 function displayCurrentQuestion() {
-    // Need to restart the timer
-
     // Display the current question
-        //questions[questionPosition];
     var content = questions[questionPosition].question;
     question.innerHTML = content;
 
@@ -185,6 +180,26 @@ function displayCurrentQuestion() {
     button2.textContent = questions[questionPosition].answers[1];
     button3.textContent = questions[questionPosition].answers[2];
     button4.textContent = questions[questionPosition].answers[3];
+}
+
+// Function for displaying the user's score and the current high score
+function showHighScore() {
+    // Creating variable for storing what will display
+    var content = ``;
+
+    // IF/ELSE to see if user has a higher, lower, or equal score than the high score
+    if(score > highScore){
+        content = `Your score is ${score}, which is higher than the highscore of ${highScore}. Congrats!`;
+        // Save the score as the new highscore
+        highScore = score;
+    } else if (score < highScore) {
+        content = `Your score is ${score}, which is lower than the highscore of ${highScore}. Good luck next time!`;
+    } else {
+        content = `Your score is ${score}, which is the same as the highscore of ${highScore}. Congrats!`;
+    }
+
+    // Display high score and user's score
+    scoreResults.textContent = content;
 }
 
 // Function 'recordHighScore'
