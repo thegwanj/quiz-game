@@ -209,17 +209,36 @@ function recordHighScore() {
     // Getting the user's initials
     var initials = document.querySelector('#name').value;
 
+    // Declare array of initials and scores
+    // var initialsList = [];
+    // var scoresList = [];
+
+    // Get the initials and scores from localstorage if already existing
+    try{
+        var storedInitials = JSON.parse(localStorage['initialsList']);
+        var storedScores = JSON.parse(localStorage['scoresList']);
+    } catch {
+        storedInitials = [];
+        storedScores = [];
+    }
+
     // IF/ELSE to see if we need to set a new highscore
     // Checking if equal because if user score WAS higher, highscore was overwritten
     if(score === highScore){
-        // Save the highscore in local storeage
+        // Save the highscore in local storage
         localStorage.setItem("highscore", highScore);
 
         // Save the user's initials and score
-        localStorage.setItem(`${initials}`, score);
+        storedScores.push(score);
+        storedInitials.push(initials);
+        localStorage.setItem(`scoresList`, JSON.stringify(storedScores));
+        localStorage.setItem(`initialsList`, JSON.stringify(storedInitials));
     } else {
         //Save the user's initials and score
-        localStorage.setItem(`${initials}`, score);
+        storedScores.push(score);
+        storedInitials.push(initials);
+        localStorage.setItem(`scoresList`, JSON.stringify(storedScores));
+        localStorage.setItem(`initialsList`, JSON.stringify(storedInitials));
     }
 
     // Hide the recording section and go back to the start
